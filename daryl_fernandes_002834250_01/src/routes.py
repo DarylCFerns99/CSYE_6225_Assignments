@@ -8,34 +8,30 @@ api = Blueprint('', __name__)
 # # register new routes with api blueprint
 # api.register_blueprint(health_check, url_prefix="")
 
-@api.route('/healthz')
+@api.route('/healthz', methods = ["GET"])
 def handle_check_health():
     resp = None
     try:
         # Check if payload has data
         if request.data:
             resp = Response(
-                status=400,
-                mimetype=None
+                status=400
             )
         else:
             # Check if database connection is established
             try:
                 db.session.execute(text('SELECT 1'))
                 resp = Response(
-                    status=200,
-                    mimetype=None
+                    status=200
                 )
             except Exception as e:
                 resp = Response(
-                    status=503,
-                    mimetype=None
+                    status=503
                 )
 
     except Exception as e:
         resp = Response(
-            status=500,
-            mimetype=None
+            status=500
         )
     
     resp.headers['Cache-control'] = 'no-cache, no-store, must-revalidate'

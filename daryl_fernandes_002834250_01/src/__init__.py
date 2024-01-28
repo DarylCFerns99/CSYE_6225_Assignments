@@ -18,7 +18,10 @@ app.env = config.ENV
 
 # Configure Flask logging
 app.logger.setLevel(logging.INFO)  # Set log level to INFO
-handler = logging.FileHandler('./logs/logfile.log')  # Log to a file
+logger_path = "./logs"
+if not os.path.exists(logger_path):
+    os.makedirs(logger_path)
+handler = logging.FileHandler(logger_path + "/logfile.log")  # Log to a file
 app.logger.addHandler(handler)
 
 # Path for our local mysql database

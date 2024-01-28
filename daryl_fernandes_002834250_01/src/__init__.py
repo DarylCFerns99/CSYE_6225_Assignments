@@ -4,6 +4,7 @@ from src.config.config import Config
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+import logging
 
 # loading environment variables
 load_dotenv()
@@ -14,6 +15,11 @@ config = Config().dev_config
 # config = Config().production_config
 # making our application to use dev env
 app.env = config.ENV
+
+# Configure Flask logging
+app.logger.setLevel(logging.INFO)  # Set log level to INFO
+handler = logging.FileHandler('./logs/logfile.log')  # Log to a file
+app.logger.addHandler(handler)
 
 # Path for our local mysql database
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI_DEV")

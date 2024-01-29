@@ -7,7 +7,7 @@ health_check = Blueprint("healthcheck", __name__)
 
 # updating headers after completion
 @health_check.after_app_request
-def add_header(response):
+def add_header(response: Response) -> Response:
     response.headers["Cache-control"] = "no-cache, no-store, must-revalidate"
     # Pragma cache is depreciated and only used for backward compatibility  HTTP/1.0
     response.headers["Pragma"] = "no-cache"
@@ -17,11 +17,11 @@ def add_header(response):
 
 # removing body data from 405 method response
 @health_check.app_errorhandler(405)
-def special_exception_handler(error):
+def special_exception_handler(error: Response) -> Response:
     return Response(status=405)
 
 @health_check.route('/healthz', methods = ["GET"])
-def handle_check_health():
+def handle_check_health() -> Response:
     try:
         # Check if payload has data
         if request.data:

@@ -37,12 +37,10 @@ flask db migrate -m "initial commit"
 flask db upgrade
 ```
 
-<h3></h3>
-<h3></h3>
-<h3></h3>
-<h3></h3>
-
-
-
-
 <h3>Update the dev_config.py, production_config.py files in daryl_fernandes_002834250_01/src/config (if required)</h3>
+
+<h3>To run the app</h3>
+
+```
+python ./app.py
+```

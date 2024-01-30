@@ -32,7 +32,7 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 <h3>Run the following scripts to create database file</h3>
 
 ```
-flask db migrate
+flask db init
 flask db migrate -m "initial commit"
 flask db upgrade
 ```

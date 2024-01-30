@@ -4,7 +4,7 @@
 
 ```
 # Create environment
-python3 -m venv <env_name>
+python -m venv <env_name>
 
 # Activating environment
 # For mac and linux os users

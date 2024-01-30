@@ -42,5 +42,9 @@ flask db upgrade
 <h3>To run the app</h3>
 
 ```
+# Navigate to daryl_fernandes_002834250_01
+cd daryl_fernandes_002834250_01
+
+# Run the following command to start the server
 python ./app.py
 ```

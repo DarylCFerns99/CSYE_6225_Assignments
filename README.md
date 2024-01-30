@@ -3,13 +3,13 @@
 <h3>Create and start python3 environment using the following command</h3>
 
 ```
-#Anaconda3
+# Create environment
 python3 -m venv <env_name>
 
-# mac and linux os users
+# Activating environment
+# For mac and linux os users
 source <env_name>/bin/activate
-
-# windows users
+# For windows users
 <env_name>/Scripts/activate
 ```
 

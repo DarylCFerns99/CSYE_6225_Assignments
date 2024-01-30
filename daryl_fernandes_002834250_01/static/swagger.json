@@ -1,0 +1,75 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Health API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/healthz": {
+            "get": {
+                "description": "API to check if connection to the database is successfull",
+                "produces": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Payload/query parameters were present in the API"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "503": {
+                        "description": "Failed to establish connection with the database"
+                    }
+                }
+            },
+            "put": {
+                "description": "Returns message showing method is not allowed",
+                "produces": [],
+                "responses": {
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            },
+            "post": {
+                "description": "Returns message showing method is not allowed",
+                "produces": [],
+                "responses": {
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Returns message showing method is not allowed",
+                "produces": [],
+                "responses": {
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            },
+            "patch": {
+                "description": "Returns message showing method is not allowed",
+                "produces": [],
+                "responses": {
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Test": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "int"
+                }
+            }
+        }
+    }
+}

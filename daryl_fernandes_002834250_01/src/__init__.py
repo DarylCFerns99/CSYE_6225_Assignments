@@ -1,15 +1,19 @@
 from flask import Flask
+from flask_cors import CORS
 import os
 from src.config.config import Config
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import logging
+from flask_swagger_ui import get_swaggerui_blueprint
 
 # loading environment variables
 load_dotenv()
 # declaring flask application
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static', static_folder='../static')
+# Setting up CORS
+CORS(app, origins=["*"])
 # calling the dev configuration
 config = Config().dev_config
 # config = Config().production_config
@@ -41,3 +45,16 @@ from src.models.test_model import Test
 # import api blueprint to register it with app
 from src.routes import api
 app.register_blueprint(api, url_prefix = "/")
+
+# Creating swagger documentation of APIs
+SWAGGER_URL="/docs"
+API_URL="/static/swagger.json"
+
+swagger_ui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': 'Health API'
+    }
+)
+app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
